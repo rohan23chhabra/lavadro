@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
 @Data
@@ -12,8 +13,10 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Cycle extends Product {
+public class Cycle extends Product implements Serializable {
+
     private String model;
+
     private String company;
 
     public Cycle(final String name, final Long price, final User user, final String model,

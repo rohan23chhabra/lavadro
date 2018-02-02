@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -12,9 +13,12 @@ import javax.persistence.Entity;
 @Data
 @DiscriminatorValue("book")
 @NoArgsConstructor
-public class Book extends Product {
+public class Book extends Product implements Serializable {
+
     private String author;
+
     private Integer pages;
+
     private String subject;
 
     public Book(final String name, final Long price, final User user, final String author, final Integer pages,

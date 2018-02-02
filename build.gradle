@@ -29,8 +29,7 @@ ext {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('org.springframework.data:spring-data-rest-hal-browser')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
 	compile('org.springframework.boot:spring-boot-starter-hateoas')
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('com.vaadin:vaadin-spring-boot-starter')
@@ -39,6 +38,8 @@ dependencies {
 	runtime group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile("org.springframework.boot:spring-boot-starter-amqp")
+	compile 'com.google.guava:guava:23.6-jre'
 }
 
 dependencyManagement {

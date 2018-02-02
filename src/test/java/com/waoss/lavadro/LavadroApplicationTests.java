@@ -19,6 +19,7 @@ import java.util.Set;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = LavadroApplication.class)
+
 public class LavadroApplicationTests {
 
     @Autowired
@@ -46,6 +47,12 @@ public class LavadroApplicationTests {
         products.add(new Cycle("c1", 2600L, user1, "gear", "atlas"));
         Cart cart = new Cart(user1, products);
         cartRepository.save(cart);
+    }
+
+    @Test
+    public void retrieveCart() {
+        saveBook();
+        cartRepository.findAll().forEach(cart -> log.info(cart.toString()));
     }
 
 }

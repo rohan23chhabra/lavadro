@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
 @EqualsAndHashCode(exclude = {"products", "cart"})
-public class User {
+public class User implements Serializable {
 
     private String username;
 
@@ -33,6 +34,7 @@ public class User {
         this.username = username;
         this.password = password;
     }
+
 
     protected User() {
     }

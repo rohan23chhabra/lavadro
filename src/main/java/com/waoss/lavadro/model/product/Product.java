@@ -12,12 +12,16 @@ import javax.persistence.*;
 public class Product {
 
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+
     private Long price;
+
     //@ElementCollection(targetClass = Category.class, fetch = FetchType.LAZY)
     //private List<Category> categories = new ArrayList<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
