@@ -11,22 +11,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringComponent
 @UIScope
 public class HomeView extends CssLayout implements View {
-    Button addProductButton = new Button("Add Product");
-    Button viewProductsButton = new Button("View Products");
-    VerticalLayout parentLayout;
+    private Button addProductButton = new Button("Add Product");
+    private Button viewProductsButton = new Button("View Products");
+    private VerticalLayout parentLayout;
 
     @Autowired
-    public HomeView(ProductChooseWindow productChooseWindow) {
+    private ProductChooseWindow productChooseWindow;
+
+    @Override
+    public void enter(final ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         setSizeFull();
+        productChooseWindow.setParentUI(UI.getCurrent());
         addProductButton.addClickListener(
                 (Button.ClickListener) event -> UI.getCurrent().addWindow(productChooseWindow));
         addComponent(addProductButton);
         addComponent(viewProductsButton);
         parentLayout = new VerticalLayout(this);
-    }
-
-    @Override
-    public void enter(final ViewChangeListener.ViewChangeEvent event) {
-
+        parentLayout.setComponentAlignment(this, Alignment.MIDDLE_CENTER);
+        UI.getCurrent().setContent(parentLayout);
     }
 }
