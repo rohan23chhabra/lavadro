@@ -40,16 +40,6 @@ public class User implements Serializable {
     }
 
 
-    public void addProduct(Product product) {
-        products.add(product);
-        product.setUser(this);
-    }
-
-    public void removeProduct(Product product) {
-        products.remove(product);
-        product.setUser(null);
-    }
-
     @Override
     public String toString() {
         return "User{" +

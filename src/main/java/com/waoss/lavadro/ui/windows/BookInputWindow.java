@@ -8,11 +8,14 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.*;
-import com.waoss.lavadro.model.product.*;
+import com.waoss.lavadro.model.product.Book;
+import com.waoss.lavadro.model.product.BookRepository;
 import com.waoss.lavadro.model.user.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -61,6 +64,7 @@ public class BookInputWindow extends Window {
                 e.printStackTrace();
             }
             book.setUser((User) VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user"));
+            book.setUploadTime(LocalDateTime.now());
             bookRepository.save(book);
             Notification.show("Book added");
         });

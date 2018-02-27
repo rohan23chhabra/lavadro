@@ -7,11 +7,14 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.*;
-import com.waoss.lavadro.model.product.*;
+import com.waoss.lavadro.model.product.Cycle;
+import com.waoss.lavadro.model.product.CycleRepository;
 import com.waoss.lavadro.model.user.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -54,6 +57,7 @@ public class CycleInputWindow extends Window {
                 e.printStackTrace();
             }
             cycle.setUser((User) VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user"));
+            cycle.setUploadTime(LocalDateTime.now());
             cycleRepository.save(cycle);
             Notification.show("Cycle added");
         });

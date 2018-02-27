@@ -4,6 +4,7 @@ import com.waoss.lavadro.model.user.User;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -18,6 +19,8 @@ public class Product {
     private User user;
 
     private Long price;
+
+    private LocalDateTime uploadTime;
 
     //@ElementCollection(targetClass = Category.class, fetch = FetchType.LAZY)
     //private List<Category> categories = new ArrayList<>();

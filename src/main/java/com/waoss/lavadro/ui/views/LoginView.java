@@ -4,25 +4,20 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.VaadinService;
-import com.vaadin.spring.annotation.SpringComponent;
-import com.vaadin.spring.annotation.UIScope;
+import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import com.waoss.lavadro.model.user.User;
 import com.waoss.lavadro.model.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.waoss.lavadro.ui.LavadroUI.navigator;
-import static com.waoss.lavadro.ui.views.ViewConstants.HOME_VIEW;
-
-@SpringComponent
-@UIScope
+@SpringView(name = LoginView.NAME)
 public class LoginView extends FormLayout implements View {
 
     private TextField username = new TextField("username");
     private PasswordField passwordField = new PasswordField("password");
     private Button loginButton = new Button("Login");
     private VerticalLayout parentLayout;
-
+    public static final String NAME = "loginView";
     @Autowired
     private UserRepository userRepository;
 
@@ -35,9 +30,9 @@ public class LoginView extends FormLayout implements View {
         passwordField.setIcon(VaadinIcons.PASSWORD);
 
         loginButton.addClickListener((Button.ClickListener) event1 -> {
-            navigator.navigateTo(HOME_VIEW);
+            getUI().getNavigator().navigateTo(HomeView.NAME);
             User user = new User(username.getValue(), passwordField.getValue());
-            userRepository.save(user);
+            user = userRepository.save(user);
             VaadinService.getCurrentRequest().getWrappedSession().setAttribute("user", user);
             Notification.show("User inserted in database");
         });
@@ -48,4 +43,6 @@ public class LoginView extends FormLayout implements View {
         addComponent(loginButton);
         UI.getCurrent().setContent(parentLayout);
     }
+
+
 }
