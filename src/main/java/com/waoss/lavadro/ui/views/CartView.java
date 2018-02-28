@@ -37,8 +37,10 @@ public class CartView extends VerticalLayout implements View {
     }
 
     private void logoutActionPerformed() {
-        getUI().getSession().close();
-        VaadinService.getCurrentRequest().getWrappedSession().invalidate();
         getUI().getNavigator().navigateTo(LoginView.NAME);
+        VaadinService.getCurrentRequest().getWrappedSession().invalidate();
+        getUI().getSession().close();
+
+
     }
 }

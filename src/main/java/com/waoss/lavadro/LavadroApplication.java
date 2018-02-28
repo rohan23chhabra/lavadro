@@ -1,7 +1,7 @@
 package com.waoss.lavadro;
 
 import com.vaadin.spring.annotation.EnableVaadin;
-import com.waoss.lavadro.api.messaging.Receiver;
+import com.waoss.lavadro.api.Receiver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.*;
@@ -15,11 +15,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication
 @EnableRabbit
 @ComponentScan
 @EnableVaadin
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class LavadroApplication extends SpringBootServletInitializer {
 
     private final static Logger log = LoggerFactory.getLogger(LavadroApplication.class);

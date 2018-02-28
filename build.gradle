@@ -1,15 +1,15 @@
 import java.awt.Desktop
 
 buildscript {
-	ext {
-		springBootVersion = '1.5.9.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -21,37 +21,38 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 ext {
-	vaadinVersion = '8.1.0'
+    vaadinVersion = '8.1.0'
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-data-rest')
-	compile('org.springframework.boot:spring-boot-starter-hateoas')
-	compile('org.springframework.boot:spring-boot-starter-jdbc')
-	compile('com.vaadin:vaadin-spring-boot-starter')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-websocket')
-	runtime group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
-	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	compile("org.springframework.boot:spring-boot-starter-amqp")
-	compile 'com.google.guava:guava:23.6-jre'
+    compile('org.springframework.boot:spring-boot-starter-hateoas')
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile('com.vaadin:vaadin-spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-websocket')
+    runtime group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.boot:spring-boot-starter-amqp")
+    compile 'com.google.guava:guava:23.6-jre'
 }
 
 dependencyManagement {
-	imports {
-		mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
-	}
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+    }
 }
 
 bootRun {
-	doFirst {
-		Desktop.desktop.browse(URI.create("http://localhost:8080/lavadroUI"))
-	}
+    doFirst {
+        Desktop.desktop.browse(URI.create("http://localhost:8080/lavadroUI"))
+    }
 }

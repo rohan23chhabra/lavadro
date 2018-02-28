@@ -1,4 +1,4 @@
-package com.waoss.lavadro.api.messaging;
+package com.waoss.lavadro.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waoss.lavadro.model.transaction.cart.Cart;

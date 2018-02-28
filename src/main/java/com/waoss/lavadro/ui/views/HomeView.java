@@ -40,8 +40,8 @@ public class HomeView extends CssLayout implements View {
 
     private void logoutActionPerformed() {
         getUI().getNavigator().navigateTo(LoginView.NAME);
-        getUI().getSession().close();
         VaadinService.getCurrentRequest().getWrappedSession().invalidate();
+        getUI().getSession().close();
 
     }
 }
