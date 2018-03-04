@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LogoutController {
 
-    @RequestMapping(value = "/lavadroUI#!logoutView", method = RequestMethod.GET)
+    @RequestMapping(value = "/logoutView", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -22,5 +22,10 @@ public class LogoutController {
         }
 
         return "redirect:/lavadroUI#!loginView";
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() {
+        return "index";
     }
 }

@@ -43,6 +43,7 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.boot:spring-boot-starter-amqp")
     compile 'com.google.guava:guava:23.6-jre'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
 }
 
 dependencyManagement {

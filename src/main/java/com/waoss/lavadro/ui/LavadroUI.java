@@ -11,7 +11,7 @@ import com.waoss.lavadro.ui.views.LoginView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-@SpringUI(path = "/lavadroUI")
+@SpringUI(path = "/lavadroUI/*")
 @Theme("valo")
 @PreserveOnRefresh
 public class LavadroUI extends UI {
