@@ -4,51 +4,100 @@
     <meta charset="UTF-8"/>
     <title>Welcome to Lavadro</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-indigo.min.css"/>
+    <link rel="stylesheet"
+          href="https://code.getmdl.io/1.3.0/material.blue-indigo.min.css"/>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script src="/scripts/HttpClient.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/scripts/notify.js"></script>
     <script src="/scripts/index.js"></script>
+    <style>
+        .form-div {
+            width : 25%;
+        }
+
+        .demo-layout-transparent {
+            background : url('../scripts/images/background.png') center / cover;
+        }
+
+        .demo-layout-transparent .mdl-layout__header,
+        .demo-layout-transparent .mdl-layout__drawer-button {
+            /* This background is dark, so we set text to white. Use 87% black instead if
+               your background is light. */
+            color : darkslateblue;
+        }
+
+        .mdl-navigation__link {
+            color : darkslateblue;
+        }
+    </style>
+
 </head>
 <body>
 
-<div align="center">
 
-    <div style="height: 200px">
-        <div style="height: 100px"></div>
-        <div>
-            <h3 style="font-family: 'Roboto',sans-serif">Lavadro</h3>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Lavadro</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+
         </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Lavadro</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="../scripts/home.html">Home</a>
+            <a class="mdl-navigation__link" href="">About Lavadro</a>
+        </nav>
     </div>
-    <form>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="username-input"/>
-            <label for="username-input" class="mdl-textfield__label">Username</label>
+    <main class="mdl-layout__content">
 
-        </div>
-        <br/>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="password" id="password-input"/>
-            <label for="password-input" class="mdl-textfield__label">Password</label>
-        </div>
+        <div align="center">
+            <div class="form-div">
+                &nbsp;
+                <div>
+                    <h3 style="font-family: 'Roboto',sans-serif">Lavadro</h3>
+                </div>
+                <form>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="username-input"/>
+                        <label for="username-input" class="mdl-textfield__label">Username</label>
 
-        <br/>
+                    </div>
+                    <br/>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="password-input"/>
+                        <label for="password-input" class="mdl-textfield__label">Password</label>
+                    </div>
 
-        <div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                    style="color: white" onclick="onLoginButtonClick()" id="login-button">
-                Login
-            </button>
-            <div style="height: 20px">
+                    <br/>
 
+                    <div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                style="color: white" id="login-button" type="button" data-upgraded=",MaterialButton"
+                                onclick="onLoginButtonClick()">
+                            Login
+                        </button>
+                        &nbsp;
+
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                style="color: white" id="signup-button" type="button" data-upgraded=",MaterialButton"
+                                onclick="onSignUpButtonClick()">
+                            Sign Up
+                        </button>
+
+                    </div>
+
+                </form>
             </div>
-            <div>
-                Not a user? Sign up <a href="">here</a>
-            </div>
+
 
         </div>
 
 
-    </form>
+    </main>
 </div>
 
 </body>

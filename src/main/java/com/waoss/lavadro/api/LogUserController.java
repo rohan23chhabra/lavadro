@@ -11,17 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-public class LogoutController {
+public class LogUserController {
 
     @RequestMapping(value = "/logoutView", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication != null) {
-            new SecurityContextLogoutHandler().logout(request, response, authentication);
-        }
-
-        return "redirect:/lavadroUI#!loginView";
+        return "";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

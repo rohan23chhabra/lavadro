@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lavadro Home</title>
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_orange-purple.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="notify.js" type="text/javascript"></script>
+    <script src="home.js" type="text/javascript"></script>
+    <style>
+        .demo-layout-transparent {
+            background : url('images/More-Tumblr-Backgrounds-for-guys-light-gray.jpg') center / cover;
+        }
+
+        .demo-layout-transparent .mdl-layout__header,
+        .demo-layout-transparent .mdl-layout__drawer-button {
+            /* This background is dark, so we set text to white. Use 87% black instead if
+               your background is light. */
+            color : white;
+        }
+
+        #add-product-heading {
+            color        : #ffffff;
+            font-family  : "Roboto Mono";
+            padding-left : 20px;
+        }
+
+        .add-product-tab {
+            color       : #ffffff;
+            font-family : "Roboto Mono";
+        }
+    </style>
+</head>
+<body>
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--transparent mdl-layout__header--scroll">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Home</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Logout</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Account</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Cart</a>
+            <a class="mdl-navigation__link" href="">Your Orders</a>
+            <a class="mdl-navigation__link" href="">View Other Products</a>
+            <a class="mdl-navigation__link" href="">Logout</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <h1 style="color: white; font-family: 'Roboto Mono'; font-size: xx-large" align="center">Lavadro is here to ease
+            out your transactions.</h1>
+        &nbsp;
+        <h4 id="add-product-heading" align="center">Add Product</h4>
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#book-panel" class="mdl-tabs__tab is-active add-product-tab">Book</a>
+                <a href="#cycle-panel" class="mdl-tabs__tab add-product-tab">Cycle</a>
+            </div>
+
+            <div class="mdl-tabs__panel is-active" id="book-panel" align="center">
+                &nbsp;
+                <form>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="name-input-book"/>
+                        <label for="name-input-book" class="mdl-textfield__label">Name</label>
+
+                    </div>
+                    <br/>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                               id="price-input-book"/>
+                        <label for="price-input-book" class="mdl-textfield__label">Price</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+
+                    <br/>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="author-input-book"/>
+                        <label for="author-input-book" class="mdl-textfield__label">Author</label>
+                    </div>
+
+                    <br/>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                               id="pages-input-book"/>
+                        <label for="pages-input-book" class="mdl-textfield__label">Pages</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+
+                    <br/>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="subject-input-book"/>
+                        <label for="subject-input-book" class="mdl-textfield__label">Subject</label>
+                    </div>
+
+                    <div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                style="color: white" id="add-book" type="button" onclick="addBook()"
+                        >
+                            Add Book
+                        </button>
+
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="mdl-tabs__panel" id="cycle-panel" align="center">
+                &nbsp;
+                <form>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="name-input-cycle"/>
+                        <label for="name-input-cycle" class="mdl-textfield__label">Name</label>
+
+                    </div>
+                    <br/>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                               id="price-input-cycle"/>
+                        <label for="price-input-cycle" class="mdl-textfield__label">Price</label>
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+
+                    <br/>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="model-input-cycle"/>
+                        <label for="model-input-cycle" class="mdl-textfield__label">Model</label>
+                    </div>
+
+                    <br/>
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" id="company-input-cycle"/>
+                        <label for="company-input-cycle" class="mdl-textfield__label">Company</label>
+                    </div>
+
+                    <br/>
+
+                    <div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                style="color: white" id="add-cycle" type="button" data-upgraded=",MaterialButton"
+                                onclick="addCycle()">
+                            Add Cycle
+                        </button>
+
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+    </main>
+
+
+</div>
+</body>
+</html>
