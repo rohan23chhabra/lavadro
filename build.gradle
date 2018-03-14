@@ -52,8 +52,3 @@ dependencyManagement {
     }
 }
 
-bootRun {
-    doFirst {
-        Desktop.desktop.browse(URI.create("http://localhost:8080/lavadroUI"))
-    }
-}
