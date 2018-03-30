@@ -9,7 +9,6 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@DiscriminatorValue("cycle")
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)

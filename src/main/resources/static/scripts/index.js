@@ -28,25 +28,17 @@ function onLoginButtonClick() {
 
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            let obj = JSON.parse(xhr.responseText);
-            let flag = 0;
-            let len = obj._embedded.users.length;
-            for (let i = 0; i < len; i++) {
-                if (obj._embedded.users[i].username === user.username && obj._embedded.users[i].password === user.password) {
-                    $('#login-button').notify('User logged in successfully. ' +
-                        'Click on top left corner to go to home page.', 'success');
-                    localStorage.setItem('user', JSON.stringify(user));
-                    flag = 1;
-                    break;
-                }
-            }
-            if (!flag) {
-                $('#login-button').notify('Sign Up first', 'error');
-            }
+        if (xhr.readyState === 4 && xhr.status === 404) {
+            $("#login-button").notify("Please sign up first.")
         }
-    }
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            $("#login-button").notify("Book added successfully", "success");
+            let obj = JSON.parse(xhr.responseText);
+            localStorage.setItem("user", obj._links.self.href);
+        }
+    };
 
-    xhr.open('GET', '/api/data/users');
+    xhr.open('GET', '/api/data/users/search/findByUsername?username=' + user.username);
     xhr.send();
 }
+

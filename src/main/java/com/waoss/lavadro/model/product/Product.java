@@ -8,8 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "product_type")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Product {
 
     private String name;
@@ -26,7 +25,7 @@ public class Product {
     //private List<Category> categories = new ArrayList<>();
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     protected Product(final String name, final Long price, final User user) {

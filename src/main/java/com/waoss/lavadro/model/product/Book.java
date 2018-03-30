@@ -11,7 +11,6 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@DiscriminatorValue("book")
 @NoArgsConstructor
 public class Book extends Product implements Serializable {
 
